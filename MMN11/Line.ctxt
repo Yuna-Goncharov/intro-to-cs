@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Line
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment1.text=\n\ @description\ This\ function\ should\ do\ the\ following\:\n\ 1.\ Get\ two\ points\ on\ plane\ from\ user\n\ 2.\ Calculate\ the\ length\ of\ the\ line\ between\ the\ points\n\ 3.\ Display\ the\ length\n\ \n\ This\ function\ assume\ the\ input\ is\ valid\ and\ all\ given\ input\ is\ integers.\n
+numComments=2
