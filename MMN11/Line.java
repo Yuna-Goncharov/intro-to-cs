@@ -39,7 +39,7 @@ public class Line {
         // calc length using root formula
         length = Math.sqrt(Math.pow((x1-x2), 2) + Math.pow((y1-y2), 2));
         
-        System.out.println("The length of the line between the points (" + x1 + "," + y2 + ") and (" + x2 + "," + y2 + ") is " + length);
+        System.out.println("The length of the line between the points (" + x1 + "," + y1 + ") and (" + x2 + "," + y2 + ") is " + length);
     }
     
 }
