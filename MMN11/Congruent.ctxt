@@ -1,6 +1,0 @@
-#BlueJ class context
-comment0.target=Congruent
-comment1.params=args
-comment1.target=void\ main(java.lang.String[])
-comment1.text=\n\ @description\ This\ function\ should\ do\ the\ following\:\ \n\ 1.\ Get\ 6\ points\ of\ triangles\ from\ user\n\ 2.\ Calculate\ the\ length\ of\ each\ point\n\ 3.\ Check\ if\ the\ 2\ traingles\ are\ congruent.\n\ 4.\ Display\ the\ length\ of\ each\ point\ \n\ 5.\ Display\ if\ the\ triangles\ are\ congruent\n\ \ \n\ This\ function\ assume\ the\ input\ is\ valid\ and\ all\ given\ input\ is\ integers.\n
-numComments=2
