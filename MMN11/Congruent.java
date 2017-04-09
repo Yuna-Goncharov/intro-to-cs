@@ -75,9 +75,24 @@ public class Congruent {
         isRib2Equal= ((rib2 == rib4) || (rib2 == rib5) || (rib2 == rib6));
         isRib3Equal = ((rib3 == rib4) || (rib3 == rib5) || (rib3 == rib6));
         
-        if (isRib1Equal && isRib2Equal && isRib3Equal)  {
-            isCongruent = true;
-            System.out.println("The 2 trinagles you enter are congruent!");
+        if (rib1 == rib4) {
+            if (rib2 == rib5 && rib3 == rib6 || rib2 == rib6 && rib3 == rib5) {
+                System.out.println("The 2 trinagles you enter are congruent!");
+            } else {
+                System.out.println("The 2 trinagles you enter are not congruent!");
+            }
+        } else if (rib1 == rib5) {
+            if (rib2 == rib4 && rib3 == rib6 || rib2 == rib6 && rib3 == rib4) {
+                System.out.println("The 2 trinagles you enter are congruent!");
+            } else {
+                
+            }
+        } else if (rib1 == rib6) {
+            if (rib2 == rib4 && rib3 == rib5 || rib2 == rib5 && rib3 == rib4) {
+                System.out.println("The 2 trinagles you enter are congruent!");
+            } else {
+                System.out.println("The 2 trinagles you enter are not congruent!");
+            }
         } else {
             System.out.println("The 2 trinagles you enter are not congruent!");
         }

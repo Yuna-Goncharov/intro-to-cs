@@ -1,3 +1,5 @@
 **/*.ctxt
 bluej.pkh
 **/*.class
+**/*.zip
+*.zip
