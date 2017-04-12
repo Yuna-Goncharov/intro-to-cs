@@ -37,15 +37,6 @@ public class Point {
     public Point(Point other) {
     }
     
-    /** 
-     * Check if given point is equal to this point   
-     * 
-     * @return {boolean}
-     */
-    public boolean equals(Point other) {
-        return false;
-    }
-    
     /**
      * Retrive the distance between the point and given point
      * 
@@ -56,6 +47,33 @@ public class Point {
     public double distance(Point other) {
         return 0;
     };
+    
+    /** 
+     * Check if given point is equal to this point   
+     * 
+     * @return {boolean}
+     */
+    public boolean equals(Point other) {
+        return false;
+    }
+    
+    /** 
+     * Retrive x coordinate of the point  
+     * 
+     * @return {double} x
+     */
+    public double getX() {
+        return 0;
+    }
+    
+    /** 
+     * Retrive y coordinate of the point
+     * 
+     * @return {double} y
+     */
+    public double getY() {
+      return 0;
+    }
     
     /**
      * Check if given point is above this point
@@ -68,18 +86,7 @@ public class Point {
         return false;
     };
     
-    /**
-     * Check if given point is under this point
-     * 
-     * @param {Point} other - The point to 
-     * 
-     * @return {boolean}
-     */
-    public boolean isUnder(Point other) {
-        return false;
-    };
-    
-    /**
+     /**
      * Check if given point is left to this point
      * 
      * @param {Point} other - The point to 
@@ -89,7 +96,6 @@ public class Point {
     public boolean isLeft(Point other) {
         return false;
     };
-    
     
     /**
      * Check if given point is right to this point
@@ -103,6 +109,17 @@ public class Point {
     };
         
     /**
+     * Check if given point is under this point
+     * 
+     * @param {Point} other - The point to 
+     * 
+     * @return {boolean}
+     */
+    public boolean isUnder(Point other) {
+        return false;
+    };
+    
+    /**
      * Moves a point. 
      * If either coordinate becomes negative the point remains unchanged.
      * 
@@ -114,30 +131,12 @@ public class Point {
     }
     
     /** 
-     * Retrive x coordinate of the point  
-     * 
-     * @return {double} x
-     */
-    public double getX() {
-        return 0;
-    }
-
-    /** 
-     * Retrive y coordinate of the point
-     * 
-     * @return {double} y
-     */
-    public double getY() {
-      return 0;
-    }
-    
-    /** 
      * Set the x coordinate of the point   
      * 
      * @param {double} x - the x coordinate to set
      */
-    public double setX(double x) {
-        return 0;
+    public void setX(double x) {
+
     }
 
     /** 
@@ -145,11 +144,10 @@ public class Point {
      * 
      * @param {double} y - the y coordinate to set
      */
-    public double setY(double y) {
-        return 0;
+    public void setY(double y) {
+
     }
     
-   
     /**
      * Calculate the radius of the point
      * 

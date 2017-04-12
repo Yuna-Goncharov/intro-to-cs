@@ -35,7 +35,7 @@ public class PointTester {
 
         System.out.println("testing setters:"); 
 
-        p0 = new Point(3,4); 
+        p0 = new Point(3,4);
         p0.setX(5);
         if (p0.getX() != 5 || p0.getY() != 4){
             System.out.println("\t ERROR - setX point was (3.0,4.0) set x to 5.0 expected (5.0, 4.0) actual= (" + p0.getX() + ", " + p0.getY() +")");;
