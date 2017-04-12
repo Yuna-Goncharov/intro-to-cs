@@ -1,5 +1,5 @@
 /**
- * Class Point represent point in plain, by the polar system.
+ * Class Point represent 2 dimensional points.
  *
  * @author Eyal Cohen
  * @version 1.0.0
@@ -32,7 +32,7 @@ public class Point {
      * Constructor for objects of class Point. 
      * Copy constrctor, construct a point using another point.
      * 
-     * @param {Point} other - The point from which to construct the new object
+     * @param other - The point from which to construct the new object
      */
     public Point(Point other) {
     }
@@ -40,9 +40,9 @@ public class Point {
     /**
      * Retrive the distance between the point and given point
      * 
-     * @param {Point} other - The point to 
+     * @param other - The point to 
      * 
-     * @return {double} distance
+     * @return The distance between the points
      */
     public double distance(Point other) {
         return 0;
@@ -51,7 +51,7 @@ public class Point {
     /** 
      * Check if given point is equal to this point   
      * 
-     * @return {boolean}
+     * @return True if the given point is equal to this point
      */
     public boolean equals(Point other) {
         return false;
@@ -60,7 +60,7 @@ public class Point {
     /** 
      * Retrive x coordinate of the point  
      * 
-     * @return {double} x
+     * @return The x coordinate of the point
      */
     public double getX() {
         return 0;
@@ -69,7 +69,7 @@ public class Point {
     /** 
      * Retrive y coordinate of the point
      * 
-     * @return {double} y
+     * @return The y coordinate of the point
      */
     public double getY() {
       return 0;
@@ -78,9 +78,9 @@ public class Point {
     /**
      * Check if given point is above this point
      * 
-     * @param {Point} other - The point to 
+     * @param other - The point to check
      * 
-     * @return {boolean}
+     * @return True if this point is above the other point
      */
     public boolean isAbove(Point other) {
         return false;
@@ -89,9 +89,9 @@ public class Point {
      /**
      * Check if given point is left to this point
      * 
-     * @param {Point} other - The point to 
+     * @param other - The point to check
      * 
-     * @return {boolean}
+     * @return True if this point is left of the other point
      */
     public boolean isLeft(Point other) {
         return false;
@@ -100,9 +100,9 @@ public class Point {
     /**
      * Check if given point is right to this point
      * 
-     * @param {Point} other - The point to 
+     * @param {Point} other - The point to check
      * 
-     * @return {boolean}
+     * @return True if given point is right to this point
      */
     public boolean isRight(Point other) {
         return false;
@@ -111,9 +111,9 @@ public class Point {
     /**
      * Check if given point is under this point
      * 
-     * @param {Point} other - The point to 
+     * @param other - The point to check
      * 
-     * @return {boolean}
+     * @return True if this point is below the other point
      */
     public boolean isUnder(Point other) {
         return false;
@@ -123,8 +123,8 @@ public class Point {
      * Moves a point. 
      * If either coordinate becomes negative the point remains unchanged.
      * 
-     * @param {double} dx - the diffrance to add to x
-     * @param {double} dy - the diffrance to add to y
+     * @param dx - the diffrance to add to x
+     * @param dy - the diffrance to add to y
      */
     public void move(double dx, double dy) {
     
@@ -133,7 +133,7 @@ public class Point {
     /** 
      * Set the x coordinate of the point   
      * 
-     * @param {double} x - the x coordinate to set
+     * @param x - the x coordinate to set
      */
     public void setX(double x) {
 
@@ -142,19 +142,24 @@ public class Point {
     /** 
      * Set the y coordinate of the point   
      * 
-     * @param {double} y - the y coordinate to set
+     * @param y - the y coordinate to set
      */
     public void setY(double y) {
 
     }
     
+    @Override
+    public String toString() {
+        return "";
+    };
+    
     /**
      * Calculate the radius of the point
      * 
-     * @param {doulbe} x - the x coordinate
-     * @param {doulbe} y - the y coordinate
+     * @param x - the x coordinate
+     * @param y - the y coordinate
      * 
-     * @return {double} radius
+     * @return radius
      */
     private double calcRadius(double x, double y) {
         return Math.sqrt(Math.pow(x, 2.0) + Math.pow(y, 2.0));
