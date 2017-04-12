@@ -29,9 +29,9 @@ public class PointTester {
         System.out.println("testing copy constructor: ");
         Point p1 = new Point(p0);
         if (p1.getX() != 3.3 || p1.getY() != 4.4){
-            System.out.println("\t ERROR - copy constructor (other p): expected(3.3, 4.4) ; actual=" + p1);
+            System.out.println("\t ERROR - copy constructor (other p): expected(3.3, 4.4) ; actual=" + p1.getX() + " " + p1.getY());
         } else 
-            System.out.println("\t OK - copy constructor (other p): expected(3.3, 4.4) ; actual=" + p1);
+            System.out.println("\t OK - copy constructor (other p): expected(3.3, 4.4) ; actual=" + p1.getX() + " " + p1.getY());
 
         System.out.println("testing setters:"); 
 

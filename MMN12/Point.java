@@ -25,7 +25,6 @@ public class Point {
         
         _radius = calcRadius(_x, _y);
         _alpha = calcAlpha(_x, _y);
-        
     }
     
     /**
@@ -170,6 +169,9 @@ public class Point {
     }
     
     private double calcAlpha(double x, double y) {
+        if (x == 0) {
+            return 1.0;
+        }
         return Math.atan(y/x);
     }
     
