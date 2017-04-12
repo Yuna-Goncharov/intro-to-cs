@@ -35,6 +35,10 @@ public class Point {
      * @param other - The point from which to construct the new object
      */
     public Point(Point other) {
+        if (other != null) {
+            _alpha = other._alpha;
+            _radius = other._radius;
+        };
     }
     
     /**
@@ -63,7 +67,7 @@ public class Point {
      * @return The x coordinate of the point
      */
     public double getX() {
-        return 0;
+        return Math.cos(_alpha) * _radius;
     }
     
     /** 
@@ -72,7 +76,7 @@ public class Point {
      * @return The y coordinate of the point
      */
     public double getY() {
-      return 0;
+      return Math.sin(_alpha) * _radius;
     }
     
     /**
