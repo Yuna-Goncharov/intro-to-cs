@@ -66,6 +66,9 @@ public class Point {
      * @return The x coordinate of the point
      */
     public double getX() {
+        if (_alpha == (Math.PI / 2)) {
+            return 0;
+        }
         return Math.cos(_alpha) * _radius;
     }
     
@@ -169,8 +172,8 @@ public class Point {
     }
     
     private double calcAlpha(double x, double y) {
-        if (x == 0) {
-            return 1.0;
+        if (x == 0 || x == 0.0) {
+            return Math.PI / 2;
         }
         return Math.atan(y/x);
     }
