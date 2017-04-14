@@ -39,9 +39,11 @@ public class PointTester {
         p0.setX(5);
         if (p0.getX() != 5 || p0.getY() != 4){
             System.out.println("\t ERROR - setX point was (3.0,4.0) set x to 5.0 expected (5.0, 4.0) actual= (" + p0.getX() + ", " + p0.getY() +")");;
-        } else
+        } else { 
             System.out.println("\t OK - setX point was (3.0,4.0) set x to 5.0 expected (5.0, 4.0)  actual=(" + p0.getX() + ", " + p0.getY() +")");
-        p0 = new Point(3,4); 
+        }
+        
+        p0 = new Point(3,4);         
         p0.setY(5);
         if (p0.getX() != 3 || p0.getY() != 5){
             System.out.println("\t ERROR - setY point was (3.0,4.0) set y to 5.0 expected (3.0, 5.0) actual= (" + p0.getX() + ", " + p0.getY() +")");;

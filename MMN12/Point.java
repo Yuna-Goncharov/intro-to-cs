@@ -57,7 +57,11 @@ public class Point {
      * @return True if the given point is equal to this point
      */
     public boolean equals(Point other) {
-        return false;
+        if (other._alpha == _alpha && other._radius == _radius) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
     /** 
@@ -89,7 +93,11 @@ public class Point {
      * @return True if this point is above the other point
      */
     public boolean isAbove(Point other) {
-        return false;
+        if (other._alpha < _alpha) {
+            return true;
+        } else {
+            return false;
+        }
     };
     
      /**
@@ -100,7 +108,11 @@ public class Point {
      * @return True if this point is left of the other point
      */
     public boolean isLeft(Point other) {
-        return false;
+        if (other._radius > _radius) {
+            return true;
+        } else {
+           return false; 
+        }
     };
     
     /**
@@ -111,7 +123,12 @@ public class Point {
      * @return True if given point is right to this point
      */
     public boolean isRight(Point other) {
-        return false;
+        if (other._radius < _radius) {
+            return true;
+        } else {
+           return false; 
+        }
+
     };
         
     /**
@@ -122,7 +139,11 @@ public class Point {
      * @return True if this point is below the other point
      */
     public boolean isUnder(Point other) {
-        return false;
+        if (other._alpha > _alpha) {
+            return true;
+        } else {
+            return false;
+        }
     };
     
     /**
@@ -142,7 +163,9 @@ public class Point {
      * @param x - the x coordinate to set
      */
     public void setX(double x) {
-
+        double y = getY();
+        _alpha = calcAlpha(x, y);
+        _radius = calcRadius(x, y);
     }
 
     /** 
@@ -151,7 +174,9 @@ public class Point {
      * @param y - the y coordinate to set
      */
     public void setY(double y) {
-
+        double x = getX();
+        _alpha = calcAlpha(x, y);
+        _radius = calcRadius(x, y);
     }
     
     @Override
@@ -176,6 +201,5 @@ public class Point {
             return Math.PI / 2;
         }
         return Math.atan(y/x);
-    }
-    
+    }    
 }
