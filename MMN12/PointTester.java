@@ -90,9 +90,9 @@ public class PointTester {
         p0=new Point(1,1);
         p0.move(2,2); 
         if (p0.getX() != 3 || p0.getY() != 3) {
-            System.out.println("\t ERROR - p0 was (1.0,1.0) p0.move(2.0,2.0) expected p0(3.0,3.0); actual=" + p0);
+            System.out.println("\t ERROR - p0 was (1.0,1.0) p0.move(2.0,2.0) expected p0(3.0,3.0); actual=" + p0.getX() + " " + p0.getY());
         } else
-            System.out.println("\t OK - p0 was (1.0,1.0) p0.move(2.0,2.0) expected p0(3.0,3.0); actual="+ p0);
+            System.out.println("\t OK - p0 was (1.0,1.0) p0.move(2.0,2.0) expected p0(3.0,3.0); actual="+ p0.getX() + " " + p0.getY());
         System.out.println("testing distance:"); 
         p0 = new Point (0,0);
         p2 = new Point (4.0, 3.0);
@@ -100,6 +100,16 @@ public class PointTester {
             System.out.println("\t ERROR - p0.distance(p2) expected 5 ; actual=" + p0.distance(p2) + " p0=" + p0 + "; p2=" + p2);
         } else
             System.out.println("\t OK - p0.distance(p2) expected 5 ; actual=" + p0.distance(p2) + " p0=" + p0 + "; p2=" + p2);
+
+            
+        System.out.println("testing toString: \n");
+        Point p = new Point(4.0, 4.0);
+        if (p.toString() != "(4.0,4.0)") {
+            System.out.println("\t ERROR - p.toString() expected (4.0,4.0), actual=" + p.toString());
+        } else {
+            System.out.println("\t OK - p0.toString() expected (4.0,4.0) ; actual=" + p.toString());
+        }
+
 
         System.out.println("********** Test Q1 Point - Finished **********\n");
     }}

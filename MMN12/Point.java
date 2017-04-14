@@ -48,7 +48,12 @@ public class Point {
      * @return The distance between the points
      */
     public double distance(Point other) {
-        return 0;
+        double x1 = getX();
+        double y1 = getY();
+        double x2 = other.getX();
+        double y2 = other.getY();
+        
+        return Math.sqrt(Math.pow((x1-x2), 2) + Math.pow((y1-y2), 2));
     };
     
     /** 
@@ -73,7 +78,7 @@ public class Point {
         if (_alpha == (Math.PI / 2)) {
             return 0;
         }
-        return Math.cos(_alpha) * _radius;
+        return round(Math.cos(_alpha) * _radius);
     }
     
     /** 
@@ -82,7 +87,7 @@ public class Point {
      * @return The y coordinate of the point
      */
     public double getY() {
-      return Math.sin(_alpha) * _radius;
+      return round(Math.sin(_alpha) * _radius);
     }
     
     /**
@@ -154,7 +159,15 @@ public class Point {
      * @param dy - the diffrance to add to y
      */
     public void move(double dx, double dy) {
-    
+      double x = getX();
+      double y = getY();
+      x = x + dx;
+      y = y + dy;
+      
+      _alpha = calcAlpha(x, y);
+      _radius = calcRadius(x, y);
+      
+      // TODO: Check if the point move further then the 4 pair   
     }
     
     /** 
@@ -181,7 +194,7 @@ public class Point {
     
     @Override
     public String toString() {
-        return "";
+        return "(" + getX() + "," + getY() + ")";
     };
     
     /**
@@ -201,5 +214,9 @@ public class Point {
             return Math.PI / 2;
         }
         return Math.atan(y/x);
-    }    
+    }
+    
+    private double round(double number) {
+        return Math.round(number * 10000)/(double) 10000;
+    }
 }

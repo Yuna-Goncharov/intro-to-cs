@@ -1,19 +1,22 @@
 #BlueJ package file
+dependency1.from=PointTester
+dependency1.to=Point
+dependency1.type=UsesDependency
 editor.fx.0.height=744
 editor.fx.0.width=1382
 editor.fx.0.x=-8
 editor.fx.0.y=-8
-objectbench.height=152
+objectbench.height=154
 objectbench.width=760
 package.divider.horizontal=0.6
-package.divider.vertical=0.682
-package.editor.height=334
+package.divider.vertical=0.678
+package.editor.height=332
 package.editor.width=666
 package.editor.x=20
 package.editor.y=44
 package.frame.height=600
 package.frame.width=800
-package.numDependencies=0
+package.numDependencies=1
 package.numTargets=2
 package.showExtends=true
 package.showUses=true
