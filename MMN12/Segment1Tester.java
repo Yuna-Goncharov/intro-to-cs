@@ -82,9 +82,9 @@ public class Segment1Tester {
         Point pL = new Point(10.0,0.0);
         Point pR = new Point(15.0,0.0);
         if (! sMid.getPoLeft().equals(pL) || ! sMid.getPoRight().equals(pR))  {
-            System.out.println("\t ERROR - after moveHorizontal - expected (10.0,0.0)---(15.0,0.0) ; actual=" + sMid);
+            System.out.println("\t ERROR - after moveHorizontal - expected (10.0,0.0)---(15.0,0.0) ; actual=" + sMid.getPoLeft() + " " + sMid.getPoRight());
         } else
-            System.out.println("\t OK - after moveHorizontal - expected (10.0,0.0)---(15.0,0.0) ; actual=" + sMid);
+            System.out.println("\t OK - after moveHorizontal - expected (10.0,0.0)---(15.0,0.0) ; actual=" + sMid.getPoLeft() + " " + sMid.getPoRight());
         System.out.println("Test moveVertical:");
 
         sMidLef.moveVertical(5.0);
