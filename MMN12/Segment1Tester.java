@@ -103,14 +103,20 @@ public class Segment1Tester {
             System.out.println("\t OK - s1.getLength() - expected length 5.0 ; actual=" + s1.getLength());
         System.out.println("Test pointOnSegment:");
         Point p = new Point (1.0, 0.0); 
-
+        Point p1 = new Point(2.0, 5.0);
         if (!s1.pointOnSegment(p)) {
             System.out.println("\t ERROR - s1.pointOnSegment(p) - expected true ; actual=" + s1.pointOnSegment(p));
         } else
             System.out.println("\t OK - s1.pointOnSegment(p) - expected true ; actual=" + s1.pointOnSegment(p));
+        if (!s1.pointOnSegment(p1)) {
+            System.out.println("\t OK - s1.pointOnSegment(p1) - expected true ; actual=" + s1.pointOnSegment(p));
+            
+        } else {
+            System.out.println("\t ERROR - s1.pointOnSegment(p1) - expected true ; actual=" + s1.pointOnSegment(p));
+        }
         System.out.println("Test isBigger:");
         s1 = new Segment1(0.0, 0.0, 2.0, 0.0);
-        Segment1 s2 = new Segment1(0.0, 2.0, 4.0, 2.0);		
+        Segment1 s2 = new Segment1(0.0, 2.0, 4.0, 2.0);     
 
         if (! s2.isBigger(s1)) {
             System.out.println("\t ERROR - s2.isBigger(s1) - expected true ; actual=" + s2.isBigger(s1));

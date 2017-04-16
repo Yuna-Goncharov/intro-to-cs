@@ -58,6 +58,11 @@ public class Segment1 {
      * @param delta The length change
      */
     public void changeSize(double delta) {
+        Point tempPoRight = _poRight;
+        _poRight.move(delta, 0.0);
+        if (!_poRight.isRight(_poLeft)) {
+            _poRight = tempPoRight;
+        }
     }
     
     /**
@@ -209,6 +214,9 @@ public class Segment1 {
      * @return True if p is on this segment
      */
     public boolean pointOnSegment(Point p) {
+        if (p.isRight(_poLeft) && p.isLeft(_poRight)) {
+            return true;
+        }
         return false;
     }
     
@@ -220,7 +228,7 @@ public class Segment1 {
      */
     @Override
     public String toString() {
-        return "";
+        return "(" + _poLeft.getX() + "," + _poLeft.getY() + ")---(" + _poRight.getX() + "," + _poRight.getY() + ")";
     }
     
     /**
