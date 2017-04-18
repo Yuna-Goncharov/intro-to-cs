@@ -204,6 +204,7 @@ public class Segment1 {
      * @return The overlap size
      */
     public double overlap(Segment1 other) { 
+        // TODO: Handle all cases
         return _poRight.getX() - other.getPoLeft().getX();
     }
     
