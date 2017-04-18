@@ -92,7 +92,7 @@ public class Segment2Tester {
 
         System.out.println("Test moveHorizontal:");
         sMid.moveHorizontal(5.0);
-        Point pL = new Point(10.0,0.0);
+        Point pL = new Point(10.0,0.0); 
         Point pR = new Point(15.0,0.0);
         if (! sMid.getPoLeft().equals(pL) || ! sMid.getPoRight().equals(pR))  {
             System.out.println("\t ERROR - after moveHorizontal - expected (10.0,0.0)---(15.0,0.0) ; actual=" + sMid);
@@ -123,7 +123,7 @@ public class Segment2Tester {
             System.out.println("\t OK - s1.pointOnSegment(p) - expected true ; actual=" + s1.pointOnSegment(p));
         System.out.println("Test isBigger:");
         s1 = new Segment2(0.0, 0.0, 2.0, 0.0);
-        Segment2 s2 = new Segment2(0.0, 2.0, 4.0, 2.0);		
+        Segment2 s2 = new Segment2(0.0, 2.0, 4.0, 2.0);     
 
         if (! s2.isBigger(s1)) {
             System.out.println("\t ERROR - s2.isBigger(s1) - expected true ; actual=" + s2.isBigger(s1));

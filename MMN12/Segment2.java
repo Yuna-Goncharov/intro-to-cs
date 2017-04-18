@@ -204,7 +204,7 @@ public class Segment2 {
      * @param delta the displacement size
      */
     public void moveHorizontal(double delta) {
-
+        _poCenter.setX(_poCenter.getX() + delta);
     }
         
     /**
@@ -213,7 +213,7 @@ public class Segment2 {
      * @param delta the displacement size
      */
     public void moveVertical(double delta) {
-      
+        _poCenter.setY(_poCenter.getY() + delta);
     }
         
     /**
@@ -223,7 +223,7 @@ public class Segment2 {
      * @return The overlap size
      */
     public double overlap(Segment2 other) { 
-      return 0;
+        return 0;
     }
     
     /**
@@ -233,7 +233,10 @@ public class Segment2 {
      * @return True if p is on this segment
      */
     public boolean pointOnSegment(Point p) {
-      return false;
+        if (p.isRight(getPoLeft()) && p.isLeft(getPoRight())) {
+            return true;
+        }
+        return false;
     }
     
     /**

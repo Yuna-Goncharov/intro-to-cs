@@ -205,7 +205,22 @@ public class Segment1 {
      */
     public double overlap(Segment1 other) { 
         // TODO: Handle all cases
-        return _poRight.getX() - other.getPoLeft().getX();
+       if(_poLeft.getX() <= other._poLeft.getX()) {
+            if(_poRight.getX() <= other._poRight.getX() && _poRight.getX() >= other._poLeft.getX()) {
+                return _poRight.getX() - other._poLeft.getX();
+            }
+            if(_poRight.getX() >= other._poRight.getX()) {
+                return other.getLength();
+            }
+        } else {
+            if(_poRight.getX() <= other._poRight.getX()) {
+                return getLength();
+            }
+            if(_poRight.getX() >= other._poRight.getX() && _poLeft.getX() <= other._poRight.getX()) {
+                return other._poRight.getX()  - _poLeft.getX();
+            }
+        }
+        return 0;
     }
     
     /**
