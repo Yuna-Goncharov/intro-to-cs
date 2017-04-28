@@ -60,7 +60,7 @@ public class Segment1 {
      */
     public void changeSize(double delta) {
         Point tempPoRight = new Point(_poRight);
-        _poRight.move(delta, 0.0);
+        _poRight.move(delta, DEFAULT_VALUE);
 
         if (!_poRight.isRight(_poLeft) && getLength() < DEFAULT_VALUE) {
             _poRight = new Point(tempPoRight);
@@ -115,11 +115,7 @@ public class Segment1 {
      * @return True if this segment is above the reference segment
      */
     public boolean isAbove(Segment1 other) {
-        if (_poLeft.isAbove(other.getPoLeft())) {
-            return true;
-        } else {
-            return false;
-        }
+        return _poLeft.isAbove(other.getPoLeft());
     }
         
     /**
@@ -129,11 +125,7 @@ public class Segment1 {
      * @return True if this segment is bigger than the reference segment
      */
     public boolean isBigger(Segment1 other) {
-        if (getLength() > other.getLength()) {
-            return true;
-        } else {
-            return false;
-        }
+        return getLength() > other.getLength();
     }
 
     /**
@@ -143,11 +135,7 @@ public class Segment1 {
      * @return True if this segment is left to the reference segment
      */
     public boolean isLeft(Segment1 other) {
-        if (_poLeft.isLeft(other.getPoLeft())) {
-            return true;
-        }
-        
-        return false;
+        return _poLeft.isLeft(other.getPoLeft());   
     }
     
     /**
@@ -157,11 +145,7 @@ public class Segment1 {
      * @return True if this segment is right to the reference segment
      */
     public boolean isRight(Segment1 other) {
-        if (_poRight.isRight(other.getPoRight())) {
-            return true;
-        }
-
-        return false;
+        return _poRight.isRight(other.getPoRight());
     }
     
     /**
@@ -171,11 +155,7 @@ public class Segment1 {
      * @return True if this segment is under to the reference segment
      */
     public boolean isUnder(Segment1 other) {
-        if (_poLeft.isUnder(other.getPoLeft())) {
-            return true;
-        } else {
-            return false;
-        }
+        return _poLeft.isUnder(other.getPoLeft());
     }
 
     /**
@@ -184,8 +164,8 @@ public class Segment1 {
      * @param delta the displacement size
      */
     public void moveHorizontal(double delta) {
-        _poRight.move(delta, 0);
-        _poLeft.move(delta, 0);
+        _poRight.move(delta, DEFAULT_VALUE);
+        _poLeft.move(delta, DEFAULT_VALUE);
     }
         
     /**
@@ -194,8 +174,8 @@ public class Segment1 {
      * @param delta the displacement size
      */
     public void moveVertical(double delta) {
-        _poRight.move(0, delta);
-        _poLeft.move(0, delta);
+        _poRight.move(DEFAULT_VALUE, delta);
+        _poLeft.move(DEFAULT_VALUE, delta);
     }
         
     /**
@@ -220,7 +200,7 @@ public class Segment1 {
                 return other._poRight.getX()  - _poLeft.getX();
             }
         }
-        return 0;
+        return DEFAULT_VALUE;
     }
     
     /**
@@ -230,7 +210,7 @@ public class Segment1 {
      * @return True if p is on this segment
      */
     public boolean pointOnSegment(Point p) {
-        if ((p.isRight(_poLeft) && p.isLeft(_poRight))) {
+        if (p.isRight(_poLeft) && p.isLeft(_poRight)) {
             return true;
         }
         return false;
