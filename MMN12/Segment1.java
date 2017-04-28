@@ -74,11 +74,7 @@ public class Segment1 {
      * @return The segment length 
      */
     public boolean equals(Segment1 other) {
-        if (other.getPoLeft().equals(_poLeft) && other.getPoRight().equals(_poRight)) {
-            return true;
-        } else {
-            return false;
-        }
+        return other.getPoLeft().equals(_poLeft) && other.getPoRight().equals(_poRight);
     }
     
     /**
@@ -210,7 +206,8 @@ public class Segment1 {
      * @return True if p is on this segment
      */
     public boolean pointOnSegment(Point p) {
-        return !p.isUnder(_poLeft) & !p.isAbove(_poLeft) && p.isRight(_poLeft) && p.isLeft(_poRight);
+        return (!p.isUnder(_poLeft) & !p.isAbove(_poLeft) && p.isRight(_poLeft) && p.isLeft(_poRight)) 
+               || (p.equals(_poLeft) || p.equals(_poRight)) ;
     }
     
     /**
