@@ -24,6 +24,7 @@ public class Segment2 {
         }
         double x = (leftX + rightX) / 2;
         double y = (leftY + rightY) / 2;
+        
         _length = leftX + rightX;
         _poCenter = new Point(x, y);
     }
@@ -35,7 +36,7 @@ public class Segment2 {
      * @param length the segment length
      */
     public Segment2(Point poCenter, double length) {
-       _poCenter = poCenter;
+       _poCenter = new Point(poCenter);
        _length = length;
     }
     
@@ -67,7 +68,7 @@ public class Segment2 {
      * @param other the reference segment
      */
     public Segment2(Segment2 other) {
-        _poCenter = other._poCenter;
+        _poCenter = new Point(other._poCenter);
         _length = other._length;
     }
     
@@ -88,7 +89,7 @@ public class Segment2 {
      * @return The segment length 
      */
     public boolean equals(Segment2 other) {
-        if (other._poCenter == _poCenter && other._length == _length) {
+        if (other._poCenter.equals(_poCenter) && other._length == _length) {
             return true;
         } else {
             return false;
@@ -135,7 +136,7 @@ public class Segment2 {
      * @return True if this segment is above the reference segment
      */
     public boolean isAbove(Segment2 other) {
-        if (other.getPoLeft().getY() < getPoLeft().getY()) {
+        if (_poCenter.isAbove(other._poCenter)) {
             return true;
         } else {
             return false;
@@ -163,7 +164,7 @@ public class Segment2 {
      * @return True if this segment is left to the reference segment
      */
     public boolean isLeft(Segment2 other) {
-        if (other._poCenter.getX() > _poCenter.getX()) {
+        if (_poCenter.isLeft(other._poCenter)) {
             return true;
         } else {
             return false;
@@ -177,7 +178,7 @@ public class Segment2 {
      * @return True if this segment is right to the reference segment
      */
     public boolean isRight(Segment2 other) {
-        if (other._poCenter.getX() < _poCenter.getX()) {
+        if (getPoRight().isRight(other.getPoRight())) {
             return true;
         } else {
             return false;
@@ -191,7 +192,7 @@ public class Segment2 {
      * @return True if this segment is under to the reference segment
      */
     public boolean isUnder(Segment2 other) {
-        if (other.getPoLeft().getY() > getPoLeft().getY()) {
+        if (_poCenter.isUnder(other.getPoLeft())) {
             return true;
         } else {
             return false;
@@ -204,7 +205,8 @@ public class Segment2 {
      * @param delta the displacement size
      */
     public void moveHorizontal(double delta) {
-        _poCenter.setX(_poCenter.getX() + delta);
+        getPoLeft().move(delta, 0);
+        getPoRight().move(delta, 0);
     }
         
     /**
@@ -213,7 +215,7 @@ public class Segment2 {
      * @param delta the displacement size
      */
     public void moveVertical(double delta) {
-        _poCenter.setY(_poCenter.getY() + delta);
+        _poCenter.move(0, delta);
     }
         
     /**

@@ -5,6 +5,7 @@
  * @version 1.0.0
  */
 public class Segment1 {
+    final double DEFAULT_VALUE = 0;
     private Point _poLeft, _poRight;
     
     /**
@@ -37,8 +38,8 @@ public class Segment1 {
             double y = left.getY();
             right.setY(y);
         }
-        _poLeft = left;
-        _poRight = right;
+        _poLeft = new Point(left);
+        _poRight = new Point(right);
     }
     
     /**
@@ -47,8 +48,8 @@ public class Segment1 {
      * @param other the reference segment
      */
     public Segment1(Segment1 other) {
-        _poLeft = other._poLeft;
-        _poRight = other._poRight;
+        _poLeft = new Point(other._poLeft);
+        _poRight = new Point(other._poRight);
     }
     
     /**
@@ -58,10 +59,11 @@ public class Segment1 {
      * @param delta The length change
      */
     public void changeSize(double delta) {
-        Point tempPoRight = _poRight;
+        Point tempPoRight = new Point(_poRight);
         _poRight.move(delta, 0.0);
-        if (!_poRight.isRight(_poLeft)) {
-            _poRight = tempPoRight;
+
+        if (!_poRight.isRight(_poLeft) && getLength() < DEFAULT_VALUE) {
+            _poRight = new Point(tempPoRight);
         }
     }
     
@@ -72,7 +74,7 @@ public class Segment1 {
      * @return The segment length 
      */
     public boolean equals(Segment1 other) {
-        if (other.getPoLeft() == _poLeft && other.getPoRight() == _poRight) {
+        if (other.getPoLeft().equals(_poLeft) && other.getPoRight().equals(_poRight)) {
             return true;
         } else {
             return false;
@@ -94,7 +96,7 @@ public class Segment1 {
      * @return The left point of the segment
      */
     public Point getPoLeft() {
-        return _poLeft;
+        return new Point(_poLeft);
     }
     
     /**
@@ -103,7 +105,7 @@ public class Segment1 {
      * @return The right point of the segment
      */
     public Point getPoRight() { 
-        return _poRight;
+        return new Point(_poRight);
     }
         
     /**
@@ -113,7 +115,7 @@ public class Segment1 {
      * @return True if this segment is above the reference segment
      */
     public boolean isAbove(Segment1 other) {
-        if (other.getPoLeft().getY() < _poLeft.getY()) {
+        if (_poLeft.isAbove(other.getPoLeft())) {
             return true;
         } else {
             return false;
@@ -141,13 +143,13 @@ public class Segment1 {
      * @return True if this segment is left to the reference segment
      */
     public boolean isLeft(Segment1 other) {
-        if (other.getPoLeft().getX() > _poLeft.getX()) {
+        if (_poLeft.isLeft(other.getPoLeft())) {
             return true;
-        } else {
-            return false;
         }
-    }
         
+        return false;
+    }
+    
     /**
      * Check if this segment is right of a received segment.
      * 
@@ -155,12 +157,11 @@ public class Segment1 {
      * @return True if this segment is right to the reference segment
      */
     public boolean isRight(Segment1 other) {
-        if (other.getPoLeft().getX() < _poLeft.getX()) {
+        if (_poRight.isRight(other.getPoRight())) {
             return true;
-        } else {
-            return false;
         }
 
+        return false;
     }
     
     /**
@@ -170,7 +171,7 @@ public class Segment1 {
      * @return True if this segment is under to the reference segment
      */
     public boolean isUnder(Segment1 other) {
-        if (other.getPoLeft().getY() > _poLeft.getY()) {
+        if (_poLeft.isUnder(other.getPoLeft())) {
             return true;
         } else {
             return false;
@@ -183,8 +184,8 @@ public class Segment1 {
      * @param delta the displacement size
      */
     public void moveHorizontal(double delta) {
-        _poRight.setX(_poRight.getX() + delta);
-        _poLeft.setX(_poLeft.getX() + delta);
+        _poRight.move(delta, 0);
+        _poLeft.move(delta, 0);
     }
         
     /**
@@ -193,8 +194,8 @@ public class Segment1 {
      * @param delta the displacement size
      */
     public void moveVertical(double delta) {
-        _poRight.setY(_poRight.getY() + delta);
-        _poLeft.setY(_poLeft.getY() + delta);
+        _poRight.move(0, delta);
+        _poLeft.move(0, delta);
     }
         
     /**
@@ -204,7 +205,6 @@ public class Segment1 {
      * @return The overlap size
      */
     public double overlap(Segment1 other) { 
-        // TODO: Handle all cases
        if(_poLeft.getX() <= other._poLeft.getX()) {
             if(_poRight.getX() <= other._poRight.getX() && _poRight.getX() >= other._poLeft.getX()) {
                 return _poRight.getX() - other._poLeft.getX();
@@ -230,7 +230,7 @@ public class Segment1 {
      * @return True if p is on this segment
      */
     public boolean pointOnSegment(Point p) {
-        if (p.isRight(_poLeft) && p.isLeft(_poRight)) {
+        if ((p.isRight(_poLeft) && p.isLeft(_poRight))) {
             return true;
         }
         return false;
