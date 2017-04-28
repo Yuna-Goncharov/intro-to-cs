@@ -98,11 +98,11 @@ public class Point {
      * @return True if this point is above the other point
      */
     public boolean isAbove(Point other) {
-        if (other._alpha < _alpha) {
+        if (other.getY() < getY()) {
             return true;
-        } else {
-            return false;
         }
+        
+        return false;
     };
     
      /**
@@ -113,7 +113,7 @@ public class Point {
      * @return True if this point is left of the other point
      */
     public boolean isLeft(Point other) {
-        if (other._radius > _radius) {
+        if (other.getX() > getX()) {
             return true;
         } else {
            return false; 
@@ -128,7 +128,7 @@ public class Point {
      * @return True if given point is right to this point
      */
     public boolean isRight(Point other) {
-        if (other._radius < _radius) {
+        if (other.getX() < getX()) {
             return true;
         } else {
            return false; 
@@ -144,7 +144,7 @@ public class Point {
      * @return True if this point is below the other point
      */
     public boolean isUnder(Point other) {
-        if (other._alpha > _alpha) {
+        if (other.getY() > getY()) {
             return true;
         } else {
             return false;
@@ -159,15 +159,19 @@ public class Point {
      * @param dy - the diffrance to add to y
      */
     public void move(double dx, double dy) {
-      double x = getX();
-      double y = getY();
-      x = x + dx;
-      y = y + dy;
-      
-      _alpha = calcAlpha(x, y);
-      _radius = calcRadius(x, y);
-      
-      // TODO: Check if the point move further then the 4 pair   
+        double x = getX();
+        double y = getY();
+ 
+        x = x + dx;
+        y = y + dy;
+        
+        y = (y < DEFAULT_VALUE) ? getY() : y;
+        x = (x < DEFAULT_VALUE) ? getX() : x;
+        
+        _alpha = calcAlpha(x, y);
+        _radius = calcRadius(x, y);
+        
+        // TODO: Check if the point move further then the 4 pair   
     }
     
     /** 
@@ -177,6 +181,8 @@ public class Point {
      */
     public void setX(double x) {
         double y = getY();
+        x = (x >= DEFAULT_VALUE) ? x : getX();
+
         _alpha = calcAlpha(x, y);
         _radius = calcRadius(x, y);
     }
@@ -188,6 +194,8 @@ public class Point {
      */
     public void setY(double y) {
         double x = getX();
+        y = (y >= DEFAULT_VALUE) ? y : getY();
+        
         _alpha = calcAlpha(x, y);
         _radius = calcRadius(x, y);
     }
