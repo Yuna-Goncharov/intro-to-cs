@@ -243,7 +243,6 @@ public class Segment2 {
     }
     
     /**
-םהקרךשפ     * Return a string representation of this segment in the format (3.0,4.0)---(3.0,6.0).
      * 
      * @overrides toString in class java.lang.Object
      * @return String representation of this segment
