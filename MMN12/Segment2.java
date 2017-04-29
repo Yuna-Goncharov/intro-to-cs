@@ -21,15 +21,20 @@ public class Segment2 {
      * @param rightY Y value of right point
      */
     public Segment2(double leftX, double leftY, double rightX, double rightY) {
+        leftX = leftX < DEFAULT_VALUE ? DEFAULT_VALUE : leftX;
+        leftY = leftY < DEFAULT_VALUE ? DEFAULT_VALUE : leftY;
+        
+        rightX = rightX < DEFAULT_VALUE ? DEFAULT_VALUE : rightX;
+        rightY = rightY < DEFAULT_VALUE ? DEFAULT_VALUE : rightY;
+        
         if (leftY != rightY) {
             rightY = leftY;
         }
         
         double x = (leftX + rightX) / 2;
-        double y = (leftY + rightY) / 2;
 
-        _length = leftX + rightX;
-        _poCenter = new Point(x, y);
+        _length = rightX - leftX;
+        _poCenter = new Point(x, rightY);
     }
 
     /**
@@ -55,14 +60,12 @@ public class Segment2 {
         if (left.getY() != right.getY()) {
             y = left.getY();
             right.setY(y);
-        } else {
-            y = (left.getY() + right.getY()) / 2;
         }
-  
-        x = (left.getX() + right.getX()) / 2;
+        
+        x = (right.getX() - left.getX()) / 2;
 
         _length = right.getX() - left.getX();
-        _poCenter = new Point(x, y);
+        _poCenter = new Point(x, right.getY());
     }
     
     /**
@@ -84,6 +87,7 @@ public class Segment2 {
     public void changeSize(double delta) {
         double tempLength = getLength();
         
+        _poCenter.setX(delta / 2);
         _length = _length + delta;
         
         if (!getPoRight().isRight(getPoLeft()) && _length < DEFAULT_VALUE) {
@@ -190,9 +194,8 @@ public class Segment2 {
      * @param delta the displacement size
      */
     public void moveHorizontal(double delta) {
-        _poCenter.setX(delta);
-        getPoRight().move(delta, DEFAULT_VALUE);
-        getPoLeft().move(delta, DEFAULT_VALUE);
+        System.out.println(this);
+        _poCenter.move(delta, DEFAULT_VALUE);
     }
         
     /**
@@ -201,7 +204,7 @@ public class Segment2 {
      * @param delta the displacement size
      */
     public void moveVertical(double delta) {
-        _poCenter.setY(delta);
+        _poCenter.move(DEFAULT_VALUE, delta);
     }
         
     /**

@@ -165,13 +165,10 @@ public class Point {
         x = x + dx;
         y = y + dy;
         
-        y = (y < DEFAULT_VALUE) ? getY() : y;
-        x = (x < DEFAULT_VALUE) ? getX() : x;
-        
-        _alpha = calcAlpha(x, y);
-        _radius = calcRadius(x, y);
-        
-        // TODO: Check if the point move further then the 4 pair   
+        if (x > DEFAULT_VALUE && y > DEFAULT_VALUE) {
+            _alpha = calcAlpha(x, y);
+            _radius = calcRadius(x, y);
+        }
     }
     
     /** 
