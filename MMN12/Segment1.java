@@ -236,6 +236,5 @@ public class Segment1 {
         d = _poRight.distance(other.getPoRight());
         
         return a + b + c + d;
-        
     }   
 }
