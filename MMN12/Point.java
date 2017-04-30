@@ -98,11 +98,7 @@ public class Point {
      * @return True if this point is above the other point
      */
     public boolean isAbove(Point other) {
-        if (other.getY() < getY()) {
-            return true;
-        }
-        
-        return false;
+        return other.getY() < getY();
     };
     
      /**
@@ -113,11 +109,7 @@ public class Point {
      * @return True if this point is left of the other point
      */
     public boolean isLeft(Point other) {
-        if (other.getX() > getX()) {
-            return true;
-        } else {
-           return false; 
-        }
+        return other.getX() > getX();
     };
     
     /**
@@ -128,12 +120,7 @@ public class Point {
      * @return True if given point is right to this point
      */
     public boolean isRight(Point other) {
-        if (other.getX() < getX()) {
-            return true;
-        } else {
-           return false; 
-        }
-
+        return other.getX() < getX();
     };
         
     /**
@@ -144,11 +131,7 @@ public class Point {
      * @return True if this point is below the other point
      */
     public boolean isUnder(Point other) {
-        if (other.getY() > getY()) {
-            return true;
-        } else {
-            return false;
-        }
+        return other.getY() > getY();
     };
     
     /**
@@ -165,7 +148,7 @@ public class Point {
         x = x + dx;
         y = y + dy;
         
-        if (x > DEFAULT_VALUE && y > DEFAULT_VALUE) {
+        if (x >= DEFAULT_VALUE && y >= DEFAULT_VALUE) {
             _alpha = calcAlpha(x, y);
             _radius = calcRadius(x, y);
         }

@@ -194,7 +194,6 @@ public class Segment2 {
      * @param delta the displacement size
      */
     public void moveHorizontal(double delta) {
-        System.out.println(this);
         _poCenter.move(delta, DEFAULT_VALUE);
     }
         
