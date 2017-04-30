@@ -62,7 +62,7 @@ public class Segment2 {
             right.setY(y);
         }
         
-        x = (right.getX() - left.getX()) / 2;
+        x = (right.getX() + left.getX()) / 2;
 
         _length = right.getX() - left.getX();
         _poCenter = new Point(x, right.getY());
