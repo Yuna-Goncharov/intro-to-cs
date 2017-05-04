@@ -18,8 +18,9 @@ public class Polygon {
      */
     public Point highestVertex() {
         Point highestPoint = _noOfVertices > 0 ? _vertices[0] : null;
+        
         for (int index = 0; index < _noOfVertices; index++) {
-            if (_vertices[index] != null && _vertices[index].isAbove(highestPoint)) {
+            if (_vertices[index].isAbove(highestPoint)) {
                 highestPoint = _vertices[index];
             }
         }
@@ -36,7 +37,7 @@ public class Polygon {
      * @return true if the adding was successfull, false if the Points array is full.
      */
     public boolean addVertex(double x, double y) {
-        for (int index = 0; index < _noOfVertices; index++) {
+        for (int index = 0; index <= _noOfVertices; index++) {
             if (_vertices[index] == null) {
                 _vertices[index] = new Point(x, y);
                 _noOfVertices += 1;
