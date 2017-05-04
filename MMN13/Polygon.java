@@ -116,7 +116,22 @@ public class Polygon {
      * @return vertex - the next vertex in the polygon
      */
     public Point getNextVertex(Point p) {
-        return new Point(5.0, 1.0);
+        Point nextVertex = null;
+        int index = findVertex(p);
+        
+        if (index > -1) {
+            int nextIndex = index + 1;
+            
+            if (nextIndex == _noOfVertices) {
+                nextVertex = _vertices[0];
+            } else {
+                nextVertex = _vertices[nextIndex];
+            }
+            
+            nextVertex = new Point(nextVertex);
+        }
+        
+        return nextVertex;
     }
     
     /**
