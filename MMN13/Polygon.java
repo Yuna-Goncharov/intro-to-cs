@@ -51,7 +51,18 @@ public class Polygon {
     
     @Override
     public String toString() {
-        return "";
+        String str = "";
+        if ( _noOfVertices > 0 ) {
+            str = "The polygon has " + _noOfVertices + " vertices:\n(" + _vertices[0];
+            
+            for ( int i = 1; i < _noOfVertices; i++ ) { 
+                str += "," + _vertices[i];  
+                str += ")";
+            }
+        } else {
+            str = "The polygon has 0 vertices.";
+        }
+        return str;		
     }
     
     /**
