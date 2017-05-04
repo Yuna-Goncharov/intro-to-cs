@@ -113,7 +113,7 @@ public class Polygon {
      * Retrive copy of the next vertex in the polygon
      * 
      * @param p - the point before the desired point
-     * @return vertex - the next vertex in the polygon
+     * @return vertex - the next vertex in the polygon or null if no vertices
      */
     public Point getNextVertex(Point p) {
         Point nextVertex = null;
