@@ -18,8 +18,9 @@ public class Polygon {
      */
     public Point highestVertex() {
         Point highestPoint = _noOfVertices > 0 ? _vertices[0] : null;
+        
         for (int index = 0; index < _noOfVertices; index++) {
-            if (_vertices[index] != null && _vertices[index].isAbove(highestPoint)) {
+            if (_vertices[index].isAbove(highestPoint)) {
                 highestPoint = _vertices[index];
             }
         }
@@ -36,7 +37,7 @@ public class Polygon {
      * @return true if the adding was successfull, false if the Points array is full.
      */
     public boolean addVertex(double x, double y) {
-        for (int index = 0; index < _noOfVertices; index++) {
+        for (int index = 0; index <= _noOfVertices; index++) {
             if (_vertices[index] == null) {
                 _vertices[index] = new Point(x, y);
                 _noOfVertices += 1;
@@ -50,7 +51,18 @@ public class Polygon {
     
     @Override
     public String toString() {
-        return "";
+        String str = "";
+        if ( _noOfVertices > 0 ) {
+            str = "The polygon has " + _noOfVertices + " vertices:\n(" + _vertices[0];
+            
+            for ( int i = 1; i < _noOfVertices; i++ ) { 
+                str += "," + _vertices[i];  
+                str += ")";
+            }
+        } else {
+            str = "The polygon has 0 vertices.";
+        }
+        return str;		
     }
     
     /**
@@ -101,10 +113,25 @@ public class Polygon {
      * Retrive copy of the next vertex in the polygon
      * 
      * @param p - the point before the desired point
-     * @return vertex - the next vertex in the polygon
+     * @return vertex - the next vertex in the polygon or null if no vertices
      */
     public Point getNextVertex(Point p) {
-        return new Point(5.0, 1.0);
+        Point nextVertex = null;
+        int index = findVertex(p);
+        
+        if (index > -1) {
+            int nextIndex = index + 1;
+            
+            if (nextIndex == _noOfVertices) {
+                nextVertex = _vertices[0];
+            } else {
+                nextVertex = _vertices[nextIndex];
+            }
+            
+            nextVertex = new Point(nextVertex);
+        }
+        
+        return nextVertex;
     }
     
     /**
