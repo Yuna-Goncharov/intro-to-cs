@@ -1,7 +1,7 @@
 public class Polygon {
-    Point[] _vertices;
-    int _noOfVertices;
-    final int VERTICES_MAX = 10;
+    private Point[] _vertices;
+    private int _noOfVertices;
+    private final int VERTICES_MAX = 10;
     
     /**
      * Constructor for polygon class
@@ -19,6 +19,9 @@ public class Polygon {
     public Point highestVertex() {
         Point highestPoint = _vertices[0];
         
+        if (_noOfVertices == 0) {
+            return null;
+        }
         for (int index = 0; index < _noOfVertices; index++) {
             if (_vertices[index].isAbove(highestPoint)) {
                 highestPoint = _vertices[index];
@@ -49,17 +52,17 @@ public class Polygon {
     @Override
     public String toString() {
         String string = "";
-        if ( _noOfVertices > 0 ) {
-            string = "The polygon has " + _noOfVertices + " vertices:\n(" + _vertices[0];
-            
-            for ( int i = 0; i < _noOfVertices; i++ ) { 
-                string += "," + _vertices[i];  
-                if (i == (_noOfVertices - 1)) {
-                    string += ")";
-                }
+        if (_noOfVertices == 0) {
+            return "The polygon has 0 vertices.";
+        }
+        
+        string = "The polygon has " + _noOfVertices + " vertices:\n(" + _vertices[0];
+        
+        for ( int i = 1; i < _noOfVertices; i++ ) { 
+            string += "," + _vertices[i];  
+            if (i == (_noOfVertices - 1)) {
+                string += ")";
             }
-        } else {
-            string = "The polygon has 0 vertices.";
         }
         return string;     
     }
@@ -188,9 +191,9 @@ public class Polygon {
         
         box = new Polygon();
         box.addVertex( minX.getX(), minY.getY() );
-        box.addVertex( minX.getX(), maxY.getY() );
-        box.addVertex( maxX.getX(), maxY.getY() );
         box.addVertex( maxX.getX(), minY.getY() );
+        box.addVertex( maxX.getX(), maxY.getY() );
+        box.addVertex( minX.getX(), maxY.getY() );
         
         return box;
     }
