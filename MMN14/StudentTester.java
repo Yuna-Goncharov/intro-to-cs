@@ -50,8 +50,14 @@ public class StudentTester {
             System.out.println("checkFind() is failed With mat1");
         }
 
-        if (!Ex14.find(mat2, 2)) { 
-            System.out.println("checkFind() is failed with mat2");
+        for (int i = 0; i < mat2.length; i++) {
+            for (int j = 0; j < mat2.length; j++) { 
+                if (!Ex14.find(mat2, mat2[i][j])) {
+                    System.out.println("checkFind() is failed with mat2 at finding number: " + mat2[i][j]);
+                } else {
+                    System.out.println("checkFind() is success with mat2 at finding number: " + mat2[i][j]);
+                }
+            }
         }
     }
 

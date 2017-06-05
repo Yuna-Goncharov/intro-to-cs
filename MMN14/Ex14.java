@@ -7,55 +7,67 @@ public class Ex14 {
     }
     
     public static boolean find (int [][] mat, int x) {
-        int i1 = 0; 
-        int j1 = 0;
-        int i2 = mat.length; 
-        int j2 = mat.length;
+        int rowLow = 0;
+        int colLow = 0;
+        int rowHigh = mat.length;
+        int colHigh = mat.length;
+        
+        if (mat[rowLow][colLow] <= x && mat[rowHigh - 1][colHigh - 1] >= x) {
 
-        boolean found = false;
-        
-        if (mat[i1][j1] <= x && mat[i2-1][j2-1] >= x){
-        
-            while (!found && i1 < i2 && j1 < j2 ) {
-                int middle_i = (i1 + i2) / 2;
-                int middle_j = (j1 + j2) / 2;
+            while (rowLow < rowHigh && colLow < colHigh ) {
+                int rowMid = (rowLow + rowHigh) / 2;
+                int colMid = (colLow + colHigh) / 2;
                 
                 // First cell forth quarter
-                if (mat[middle_i][middle_j] == x) {
-                    return found = true; 
-                } else if (mat[middle_i][middle_j] > x) {
+                if (mat[rowMid][colMid] == x) {
+                    return true; 
+                } 
+                
+                if (mat[rowMid][colMid] > x) {
                     // First cell third quarter
-                    if (mat[middle_i][j1] == x) {
-                        return found = true;
-                    } else if (mat[middle_i][j1] > x) {
+                    if (mat[rowMid][colLow] == x) {
+                        return true;
+                    } 
+                    
+                    if (mat[rowMid][colLow] > x) {
                         // First cell second quarter
-                        if (mat[i1][middle_j] == x) {
-                            return found = true;
-                        } else if (mat[i1][middle_j] > x) {
-                            // First cell first quarter
-                            if (mat[i1][j1] == x) {
-                                return found = true;
-                            } else if (mat[i1][j1] < x) {
-                                i2 = middle_i -1;
-                                j2 = middle_j ;
-                            }
-                        } else if (mat[i1][middle_j] < x) {
-                            j1 = middle_j;
-                            i2 = middle_i;
+                        if (mat[rowLow][colMid] == x) {
+                            return true;
                         }
-                    } else if (mat[middle_i][j1] < x) {
-                        j2 = middle_j;
-                        i1 = middle_i;
-                    }
-                } else if (mat[middle_i][middle_j] < x) {
-                    j1 = middle_j;
-                    i1 = middle_i;
+                        
+                        if (mat[rowLow][colMid] > x) {
+                            // First cell first quarter
+                            if (mat[rowLow][colLow] == x) {
+                                return true;
+                            }
+                            
+                            if (mat[rowLow][colLow] < x) {
+                                rowHigh = rowMid + 1;
+                                colHigh = colMid;
+                            }
+                        } 
+                        
+                        if (mat[rowLow][colMid] < x) {
+                            colLow = colMid;
+                            rowHigh = rowMid;
+                        }
+                    } 
+                    
+                    if (mat[rowMid][colLow] < x) {
+                        colHigh = colMid;
+                        rowLow = rowMid;
+                    } 
+                } 
+                
+                if (mat[rowMid][colMid] < x) {
+                    colLow = colMid;
+                    rowLow = rowMid;
                 }
             }
         }
+        
         return false; 
     }
-    
     public static boolean isSumOf(int [] s, int n) {
         return false;
     }
