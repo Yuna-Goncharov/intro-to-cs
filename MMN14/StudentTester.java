@@ -50,7 +50,7 @@ public class StudentTester {
             System.out.println("checkFind() is failed With mat1");
         }
 
-        if (!Ex14.find(mat2, 200)) { 
+        if (!Ex14.find(mat2, 2)) { 
             System.out.println("checkFind() is failed with mat2");
         }
     }
