@@ -7,9 +7,11 @@ public class Ex14 {
     }
     
     public static boolean find (int [][] mat, int x) {
-        int i1=0; 
-        int j1=0;
-        int i2=mat.length , j2 = mat.length;
+        int i1 = 0; 
+        int j1 = 0;
+        int i2 = mat.length; 
+        int j2 = mat.length;
+
         boolean found = false;
         
         if (mat[i1][j1] <= x && mat[i2-1][j2-1] >= x){
@@ -21,42 +23,35 @@ public class Ex14 {
                 // First cell forth quarter
                 if (mat[middle_i][middle_j] == x) {
                     return found = true; 
-                }
-                else if (mat[middle_i][middle_j] > x) {
+                } else if (mat[middle_i][middle_j] > x) {
                     // First cell third quarter
                     if (mat[middle_i][j1] == x) {
                         return found = true;
-                    }
-                    else if (mat[middle_i][j1] > x) {
+                    } else if (mat[middle_i][j1] > x) {
                         // First cell second quarter
                         if (mat[i1][middle_j] == x) {
-                            return found = true;}
-                        else if (mat[i1][middle_j] > x) {
+                            return found = true;
+                        } else if (mat[i1][middle_j] > x) {
                             // First cell first quarter
                             if (mat[i1][j1] == x) {
                                 return found = true;
-                            }
-                            else if (mat[i1][j1] < x) {
+                            } else if (mat[i1][j1] < x) {
                                 i2 = middle_i -1;
                                 j2 = middle_j ;
-                            }}
-                        else if (mat[i1][middle_j] < x) {
+                            }
+                        } else if (mat[i1][middle_j] < x) {
                             j1 = middle_j;
                             i2 = middle_i;
-                        }}
-                    else if (mat[middle_i][j1] < x) {
+                        }
+                    } else if (mat[middle_i][j1] < x) {
                         j2 = middle_j;
                         i1 = middle_i;
                     }
-                }
-        
-                else if (mat[middle_i][middle_j] < x) {
-                   
+                } else if (mat[middle_i][middle_j] < x) {
                     j1 = middle_j;
                     i1 = middle_i;
                 }
             }
-            
         }
         return false; 
     }
