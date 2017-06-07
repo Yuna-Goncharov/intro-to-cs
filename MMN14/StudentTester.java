@@ -65,17 +65,41 @@ public class StudentTester {
 
     private static void checkIsSink() {
         int[][] mat1 = { //sink=1
-                {0, 1},
-                {0, 0}};
+            {0, 1},
+            {0, 0}
+        };
         
         int[][] mat2 = { //sink=2
-                {0, 1, 1},
-                {0, 1, 1},
-                {0, 0, 0}};
+            {0, 1, 1},
+            {0, 1, 1},
+            {0, 0, 0}
+        };
+        
+        int[][] mat3 = { // sink=0
+            {0, 0, 0},
+            {1, 0, 1},
+            {1, 1, 0}
+        };
 
-        if(Ex14.isSink(mat1) != 1 || Ex14.isSink(mat2) != 2)
+        int[][] mat4 = {
+            {1, 1, 1, 1},
+            {1, 0, 1, 0},
+            {1, 1, 0, 0}
+        };
+        
+        int[][] mat5 = {
+            {1, 1, 1, 1},
+            {1, 0, 1, 1},
+            {1, 1, 0, 1},
+            {0, 0, 0, 0}
+        };
+
+        if(Ex14.isSink(mat1) != 1 || Ex14.isSink(mat2) != 2 || Ex14.isSink(mat3) != 0)
             System.out.println("isSink() is failed");
-
+        
+        if(Ex14.isSink(mat4) != -1 || Ex14.isSink(mat5) != 3) 
+            System.out.println("isSink() is failed");
+        
         
     }
 

@@ -4,7 +4,6 @@ public class Ex14 {
     
     public static int isSink(int [][] mat) {
         int sink = -1;
-        int mightBe;
         int row = 0;
         int col = 0;
 
@@ -13,20 +12,18 @@ public class Ex14 {
                 col++;
 
                 if (col == mat.length) {
-                    sink = col;
+                    sink = col - 1;
                 }
             } else if (mat[row][col] == 1) {
                 row++;
             }
         }
 
-        if (sink >= 0) { 
+        if (sink >= 0) {
             for (int i = 0; i < mat.length; i++) {
-                System.out.println(sink);
-                // System.out.println(mat[sink]);
-                // if (mat[sink][i] == 1) {
-                    // sink = row;
-                // } 
+                if (mat[sink][i] == 1) {
+                    sink = row;
+                }
             }
         }
 
