@@ -106,7 +106,23 @@ public class Ex14 {
         return false; 
     }
     public static boolean isSumOf(int [] s, int n) {
-        return false;
+        return isSumOf(s, n, 0);
+    }
+    
+    private static boolean isSumOf(int [] s, int n, int x) {
+        if (n < 0 || x == s.length) {
+            return false;
+        }
+        
+        if (n == 0) {
+            return true;
+        }
+        
+        if (isSumOf(s, n - s[x], x) == true) { 
+            return isSumOf(s, n - s[x], x);
+        }
+        
+        return isSumOf(s, n, x + 1);
     }
     
     public static int numPaths (int[][] mat, int x1, int y1, int x2, int y2) {
