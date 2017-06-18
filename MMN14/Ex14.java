@@ -25,9 +25,7 @@ public class Ex14 {
                     sink = row;
                 }
             }
-        }
-
-        if (sink >= 0) {
+            
             return sink;
         }
 
@@ -105,6 +103,7 @@ public class Ex14 {
         }
         return false; 
     }
+    
     public static boolean isSumOf(int [] s, int n) {
         return isSumOf(s, n, 0);
     }
