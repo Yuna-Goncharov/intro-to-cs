@@ -94,9 +94,13 @@ public class Polygon {
 
         PointNode iterable = head;
 
-        while (iterable.getNext() != null) {
-            peri += iterable.getPoint().distance(iterable.getNext().getPoint());
-            iterable = iterable.getNext();
+        while (iterable.getNext().getNext() != null) {
+            if (iterable.getNext() == null) {
+                peri += iterable.getPoint().distance(head.getPoint());
+            } else {
+                peri += iterable.getPoint().distance(iterable.getNext().getPoint());
+                iterable = iterable.getNext();
+            }
         }
 
         return peri;
@@ -128,7 +132,18 @@ public class Polygon {
      * @return index - the index of the point
      */
     public int findVertex(Point p) {
-        return 1;
+        PointNode iterable = head;
+        int counter = 1;
+
+        while (iterable.getNext() != null) {
+            if (iterable.getPoint().equals(p)) {
+                return counter;
+            }   
+            counter = counter + 1;
+            iterable = iterable.getNext(); 
+        }
+
+        return -1;
     }
     
     /**
@@ -138,7 +153,21 @@ public class Polygon {
      * @return vertex - the next vertex in the polygon or null if no vertices
      */
     public Point getNextVertex(Point p) {
-        return new Point(1, 2);
+        PointNode iterable = head;
+
+        while (iterable.getNext() != null) {
+            if (iterable.getPoint().equals(p)) {
+                return new Point(iterable.getNext().getPoint());
+            }   
+            iterable = iterable.getNext(); 
+        }
+        
+        if (iterable == null) { 
+            System.out.println("Whatsappppppp");
+            return new Point(iterable.getPoint());
+        }
+
+        return null;
     }
     
     /**
