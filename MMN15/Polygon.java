@@ -5,6 +5,7 @@ public class Polygon {
      * Constructor for polygon class
      */
     public Polygon() {
+        head = null;
     }
     
     /**
@@ -13,6 +14,7 @@ public class Polygon {
      * @return vertex - the highest point
      */
     public Point highestVertex() {
+        return new Point(1, 1);
     } 
     
     /**
@@ -23,11 +25,55 @@ public class Polygon {
      * 
      * @return true if the adding was successfull, false if the Points array is full.
      */
-    public boolean addVertex(double x, double y) {
+    public boolean addVertex(Point p, int pos) {
+        if (pos < 1) {
+            return false;
+        }
+        if (pos == 1) {
+            add(p);
+            return true;
+        }
+        PointNode iterable = head;
+        pos--;
+
+        while (iterable != null && pos > 1) {
+            iterable = iterable.getNext();
+            pos--;
+        }
+
+        if (iterable == null) {
+            return false;
+        }
+        
+        PointNode newPoint = new PointNode(p, iterable.getNext());
+        iterable.setNext(newPoint);
+
+        return true;
+
     }
     
     @Override
     public String toString() {
+        int counter = 0;
+        String str = "(";
+        PointNode p = head;
+
+        if (p == null) {
+            return "\n The polygon has 0 vertices";
+        }
+
+        while(p != null) {
+            str += p.getPoint().toString();
+            
+            if (p.getNext() != null) { 
+                str += ",";
+            }
+            
+            p = p.getNext();
+            counter = counter + 1;
+        }
+
+        return "The polygon has " + counter + " vertices:\n" + str+")";
     }
     
     /**
@@ -36,6 +82,7 @@ public class Polygon {
      * @return perimeter
      */
     public double calcPerimeter() {
+        return -1;
     }
     
     /**
@@ -44,6 +91,7 @@ public class Polygon {
      * @return area
      */
     public double calcArea() {
+        return -1;
     }
     
     /**
@@ -53,6 +101,7 @@ public class Polygon {
      * @retrun true if this is bigger, false if other is bigger.
      */
     public boolean isBigger(Polygon other) {
+        return false;
     }
     
     /**
@@ -62,6 +111,7 @@ public class Polygon {
      * @return index - the index of the point
      */
     public int findVertex(Point p) {
+        return 1;
     }
     
     /**
@@ -71,6 +121,7 @@ public class Polygon {
      * @return vertex - the next vertex in the polygon or null if no vertices
      */
     public Point getNextVertex(Point p) {
+        return new Point(1, 2);
     }
     
     /**
@@ -79,11 +130,18 @@ public class Polygon {
      * @return retangle
      */
     public Polygon getBoundingBox() {
+        return new Polygon();
     }
     
     private Point[] getVertices() {
+        Point[] p = { new Point(123, 1)};
+        return p;
     }
     
+    private void add(Point point) {
+        head = new PointNode(point, head);
+    }
+
     private double heron(Point a, Point b, Point c) {
         double AB = a.distance(b);
         double BC = b.distance(c);

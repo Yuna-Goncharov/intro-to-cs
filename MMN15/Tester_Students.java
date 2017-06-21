@@ -24,6 +24,7 @@ public class Tester_Students {
         pol2.addVertex(new Point(10, 0), 3);
         
 		if (!myPolygon.toString().equals("The polygon has 3 vertices:\n((0.0,0.0),(1.0,1.0),(0.0,1.0))")){
+			System.out.println("Your Answer: " + myPolygon.toString());
 			System.out.println("Work on your String representation");
 			System.out.println("Currect answer:\nThe polygon has 3 vertices:\n((0.0,0.0),(1.0,1.0),(0.0,1.0))");
 		} else 
