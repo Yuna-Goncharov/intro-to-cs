@@ -163,7 +163,6 @@ public class Polygon {
         }
         
         if (iterable == null) { 
-            System.out.println("Whatsappppppp");
             return new Point(iterable.getPoint());
         }
 
