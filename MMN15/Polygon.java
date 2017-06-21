@@ -1,3 +1,5 @@
+import com.sun.javafx.scene.web.Debugger;
+
 public class Polygon {
     private PointNode head;
     
@@ -82,7 +84,22 @@ public class Polygon {
      * @return perimeter
      */
     public double calcPerimeter() {
-        return -1;
+        double peri = 0;
+
+        if (head.getNext() == null) {
+            return peri;
+        } else if (head.getNext().getNext() == null) {
+            return head.getPoint().distance(head.getNext().getPoint());
+        }
+
+        PointNode iterable = head;
+
+        while (iterable.getNext() != null) {
+            peri += iterable.getPoint().distance(iterable.getNext().getPoint());
+            iterable = iterable.getNext();
+        }
+
+        return peri;
     }
     
     /**
