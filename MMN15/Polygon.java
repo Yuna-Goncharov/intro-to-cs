@@ -95,13 +95,11 @@ public class Polygon {
         PointNode iterable = head;
 
         while (iterable.getNext().getNext() != null) {
-            if (iterable.getNext() == null) {
-                peri += iterable.getPoint().distance(head.getPoint());
-            } else {
-                peri += iterable.getPoint().distance(iterable.getNext().getPoint());
-                iterable = iterable.getNext();
-            }
+            peri += iterable.getPoint().distance(iterable.getNext().getPoint());
+            iterable = iterable.getNext();
         }
+
+        peri += iterable.getPoint().distance(head.getPoint());
 
         return peri;
     }
