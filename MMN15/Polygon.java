@@ -111,6 +111,7 @@ public class Polygon {
 
         while (iterable.getNext().getNext() != null) {
             peri += iterable.getPoint().distance(iterable.getNext().getPoint());
+            
             iterable = iterable.getNext();
         }
 
