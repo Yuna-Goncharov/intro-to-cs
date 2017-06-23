@@ -1,4 +1,4 @@
-import com.sun.javafx.scene.web.Debugger;
+import java.awt.event.HierarchyBoundsAdapter;
 
 public class Polygon {
     private PointNode head;
@@ -16,7 +16,22 @@ public class Polygon {
      * @return vertex - the highest point
      */
     public Point highestVertex() {
-        return new Point(1, 1);
+        if (head == null) {
+            return null;
+        }
+
+        PointNode iterable = head;
+        Point highest = head.getPoint();
+
+        while (iterable != null) {
+            if (iterable.getPoint().getY() > highest.getY()) {
+                highest = iterable.getPoint();
+            }
+
+            iterable = iterable.getNext();
+        }
+
+        return highest;
     } 
     
     /**
@@ -130,13 +145,18 @@ public class Polygon {
      * @return index - the index of the point
      */
     public int findVertex(Point p) {
+        if (head == null) {
+            return -1;
+        }
+
         PointNode iterable = head;
         int counter = 1;
 
-        while (iterable.getNext() != null) {
+        while (iterable != null) {
             if (iterable.getPoint().equals(p)) {
                 return counter;
-            }   
+            }
+               
             counter = counter + 1;
             iterable = iterable.getNext(); 
         }
@@ -151,17 +171,22 @@ public class Polygon {
      * @return vertex - the next vertex in the polygon or null if no vertices
      */
     public Point getNextVertex(Point p) {
-        PointNode iterable = head;
+        if (head.getNext() == null) {
+            return new Point(head.getPoint());
+        }
 
+        PointNode iterable = head;
+        
         while (iterable.getNext() != null) {
             if (iterable.getPoint().equals(p)) {
                 return new Point(iterable.getNext().getPoint());
             }   
+
             iterable = iterable.getNext(); 
         }
-        
-        if (iterable == null) { 
-            return new Point(iterable.getPoint());
+
+        if (iterable.getPoint().equals(p)) {
+            return new Point(head.getPoint());
         }
 
         return null;
