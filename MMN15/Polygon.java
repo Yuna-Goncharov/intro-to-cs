@@ -1,5 +1,3 @@
-import com.sun.javafx.scene.web.Debugger;
-
 public class Polygon {
     private PointNode head;
     
@@ -16,7 +14,22 @@ public class Polygon {
      * @return vertex - the highest point
      */
     public Point highestVertex() {
-        return new Point(1, 1);
+        if (head == null) {
+            return null;
+        }
+
+        PointNode iterable = head;
+        Point highest = head.getPoint();
+
+        while (iterable != null) {
+            if (iterable.getPoint().getY() > highest.getY()) {
+                highest = iterable.getPoint();
+            }
+
+            iterable = iterable.getNext();
+        }
+
+        return highest;
     } 
     
     /**
@@ -51,7 +64,6 @@ public class Polygon {
         iterable.setNext(newPoint);
 
         return true;
-
     }
     
     @Override
@@ -94,8 +106,9 @@ public class Polygon {
 
         PointNode iterable = head;
 
-        while (iterable.getNext().getNext() != null) {
+        while (iterable.getNext() != null) {
             peri += iterable.getPoint().distance(iterable.getNext().getPoint());
+            
             iterable = iterable.getNext();
         }
 
@@ -110,7 +123,18 @@ public class Polygon {
      * @return area
      */
     public double calcArea() {
-        return -1;
+        double area = 0;
+        PointNode iterable = head;
+
+        while (iterable.getNext().getNext() != null) {
+            area += heron(head.getPoint(), iterable.getPoint(), iterable.getNext().getPoint());
+
+            iterable = iterable.getNext();
+        }
+
+        area += heron(head.getPoint(), iterable.getPoint(), iterable.getNext().getPoint());
+
+        return area;
     }
     
     /**
@@ -120,7 +144,7 @@ public class Polygon {
      * @retrun true if this is bigger, false if other is bigger.
      */
     public boolean isBigger(Polygon other) {
-        return false;
+        return calcArea() > other.calcArea();
     }
     
     /**
@@ -130,13 +154,19 @@ public class Polygon {
      * @return index - the index of the point
      */
     public int findVertex(Point p) {
+        if (head == null) {
+            return -1;
+        }
+
         PointNode iterable = head;
         int counter = 1;
 
-        while (iterable.getNext() != null) {
+
+        while (iterable != null) {
             if (iterable.getPoint().equals(p)) {
                 return counter;
-            }   
+            }
+               
             counter = counter + 1;
             iterable = iterable.getNext(); 
         }
@@ -151,17 +181,22 @@ public class Polygon {
      * @return vertex - the next vertex in the polygon or null if no vertices
      */
     public Point getNextVertex(Point p) {
-        PointNode iterable = head;
+        if (head.getNext() == null) {
+            return new Point(head.getPoint());
+        }
 
+        PointNode iterable = head;
+        
         while (iterable.getNext() != null) {
             if (iterable.getPoint().equals(p)) {
                 return new Point(iterable.getNext().getPoint());
             }   
+
             iterable = iterable.getNext(); 
         }
-        
-        if (iterable == null) { 
-            return new Point(iterable.getPoint());
+
+        if (iterable.getPoint().equals(p)) {
+            return new Point(head.getPoint());
         }
 
         return null;
@@ -173,16 +208,51 @@ public class Polygon {
      * @return retangle
      */
     public Polygon getBoundingBox() {
-        return new Polygon();
-    }
-    
-    private Point[] getVertices() {
-        Point[] p = { new Point(123, 1)};
-        return p;
+        if (head.getNext() == null || head.getNext().getNext() == null || head.getNext().getNext() == null) {
+            return null;
+        }
+
+        Polygon box;
+        PointNode iterable = head;
+
+        Point maxY = highestVertex();
+        Point minY = head.getPoint();
+        Point maxX = head.getPoint();
+        Point minX = head.getPoint();
+
+        while (iterable != null) {
+            Point point = iterable.getPoint();
+
+            if (point.isUnder(minY)) {
+                minY = point;
+            } else if (point.isRight(maxX)) {
+                maxX = point;
+            } else if (point.isLeft(minX)) {
+                minX = point;
+            }
+
+            iterable = iterable.getNext();
+        }
+
+        box = new Polygon();
+
+        box.addVertex(new Point(minX.getX(), minY.getY()), 1);
+        box.addVertex(new Point(maxX.getX(), minY.getY()), 2);
+        box.addVertex(new Point(maxX.getX(), maxY.getY()), 3);
+        box.addVertex(new Point(minX.getX(), maxY.getY()), 4);
+
+        return box;
+        
     }
     
     private void add(Point point) {
         head = new PointNode(point, head);
+    }
+
+    private boolean isLessThen3Vertices() {
+        return head.getNext() != null 
+            || head.getNext().getNext() ==  null 
+            || head.getNext().getNext().getNext() == null;
     }
 
     private double heron(Point a, Point b, Point c) {
