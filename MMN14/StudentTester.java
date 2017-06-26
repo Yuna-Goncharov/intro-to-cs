@@ -21,13 +21,13 @@ public class StudentTester {
         
         int x1 = 0,  y1 = 0, x2 = 1, y2 = 0;
 
-        if(0 != Ex14.numPaths(mat4, x1, y1, x2, y2))
+        if(0 != Ex14Student.numPaths(mat4, x1, y1, x2, y2))
             System.out.println("checknumPaths() is failed");
         
     }
 
     private static void checkIsSumOf() {
-        if(Ex14.isSumOf(new int[] {4,5}, 11) || !Ex14.isSumOf(new int[] {4,5}, 13))
+        if(Ex14Student.isSumOf(new int[] {4,5}, 11) || !Ex14Student.isSumOf(new int[] {4,5}, 13))
             System.out.println("checkIsSumOf() is failed");
         
     }
@@ -46,15 +46,15 @@ public class StudentTester {
         };
         
         
-        if (!Ex14.find(mat1, 1)) { 
+        if (!Ex14Student.find(mat1, 1)) { 
             System.out.println("checkFind() is failed With mat1");
         }
 
         for (int i = 0; i < mat2.length; i++) {
             for (int j = 0; j < mat2.length; j++) { 
-                if (!Ex14.find(mat2, mat2[i][j])) {
+                if (!Ex14Student.find(mat2, mat2[i][j])) {
                     System.out.println("checkFind() is failed with mat2 at finding number: " + mat2[i][j]);
-                } else if (Ex14.find(mat2, 17)) { 
+                } else if (Ex14Student.find(mat2, 17)) { 
                     System.out.println("checkFind() is failed with mat2 at finding number: " + 17);                    
                 } else {
                     // System.out.println("checkFind() is success with mat2 at finding number: " + mat2[i][j] );
@@ -94,10 +94,10 @@ public class StudentTester {
             {0, 0, 0, 0}
         };
 
-        if(Ex14.isSink(mat1) != 1 || Ex14.isSink(mat2) != 2 || Ex14.isSink(mat3) != 0)
+        if(Ex14Student.isSink(mat1) != 1 || Ex14Student.isSink(mat2) != 2 || Ex14Student.isSink(mat3) != 0)
             System.out.println("isSink() is failed");
         
-        if(Ex14.isSink(mat4) != -1 || Ex14.isSink(mat5) != 3) 
+        if(Ex14Student.isSink(mat4) != -1 || Ex14Student.isSink(mat5) != 3) 
             System.out.println("isSink() is failed");
         
         
