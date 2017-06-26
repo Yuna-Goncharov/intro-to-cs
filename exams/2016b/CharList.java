@@ -20,20 +20,20 @@ public class CharList {
 		CharNode listIterable = _head;
 		CharNode sublistIterable = list._head;
 		int counter = 0;
+		int innerCounter = 0;
+		while (listIterable != null && sublistIterable != null) {
 
-		while (listIterable != null) {
 			if (listIterable.getData() == sublistIterable.getData()) { 
 				sublistIterable = sublistIterable.getNext();
 				listIterable = listIterable.getNext();
-				
-				while (sublistIterable.getNext() != null) {
+
+				while (sublistIterable != null) {
 					if (listIterable.getData() == sublistIterable.getData()) {
-						sublistIterable = sublistIterable.getNext();
-						
 						if (sublistIterable.getNext() == null) {
 							counter = counter + 1;
 						}
 					}
+					sublistIterable = sublistIterable.getNext();
 				}
 			}
 			listIterable = listIterable.getNext();
