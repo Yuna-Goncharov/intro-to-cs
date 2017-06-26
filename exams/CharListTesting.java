@@ -11,6 +11,7 @@ public class CharListTesting {
         sublist.add(new CharNode('a'));
         sublist.add(new CharNode('b'));
 
-        list.subList(sublist);
+        int counter = list.subList(sublist);
+	System.out.println(counter);
     }
 }

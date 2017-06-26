@@ -4,11 +4,9 @@ public class CharNode {
 
     private CharNode _next;
 
-    public CharNode(char dat, CharNode n) {
-        _data = dat;
-        _next = n;
+    public CharNode(char dat) {
+	    _data = dat;
     }
-
 
     public CharNode(char dat, CharNode n) {
         _data = dat;

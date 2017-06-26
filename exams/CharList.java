@@ -9,15 +9,12 @@ public class CharList {
 		_head = node;
 	}
 
-	public void add(CharNode node) {
-		CharNode iterable = _head;
-
-		while (iterable.getNext() != null) {
-			iterable = iterable.getNext();
-		}
-		
-		iterable.setNext(node);
+	public void add(CharNode p) {
+		CharNode temp = _head;
+		p.setNext(temp);
+		_head = p;
 	}
+
 
 	public int subList(CharList list) {
 		CharNode listIterable = _head;
@@ -28,11 +25,11 @@ public class CharList {
 			if (listIterable.getData() == sublistIterable.getData()) { 
 				sublistIterable = sublistIterable.getNext();
 				listIterable = listIterable.getNext();
-
-				while (sublistIterable != null) {
+				
+				while (sublistIterable.getNext() != null) {
 					if (listIterable.getData() == sublistIterable.getData()) {
 						sublistIterable = sublistIterable.getNext();
-
+						
 						if (sublistIterable.getNext() == null) {
 							counter = counter + 1;
 						}
