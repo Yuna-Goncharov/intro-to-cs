@@ -2,12 +2,21 @@ public class Exam {
     public static void main(String[] args) {
         int[] arr1 = {4, 5};
         int[] arr2 = {4, 9, 3};
+        int[] arr3 = {-5, -5, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 67, 67, 99};
 
+        System.out.println("== IS SUM OF ==");
         System.out.println(isSumOf(arr1, 13));
         System.out.println(isSumOf(arr2, 4));
-    } 
 
-
+        System.out.println("== COUNT ==");
+        System.out.println(count(arr3, 13));
+        System.out.println(count(arr3, 4));
+        System.out.println(count(arr3, 2));
+        System.out.println(count(arr3, -5));
+        System.out.println(count(arr3, 67));
+        System.out.println(count(arr3, 99));
+        System.out.println(count(arr3, 900));
+    }
 
     // Recursive function to find if the sum of group of numbers 
     // from s can equal n.
@@ -40,4 +49,63 @@ public class Exam {
 
         return isSumOf(s, n - s[index], index, str + s[index] + "") || isSumOf(s, n, index + 1, str);
     }
+
+
+    // Time: O(log n * log n)
+    // Space O(n)
+    // Apply a binary search to find the index of the most left X, and than for the right.
+    // than the function compute the diff between them - so the diff is the count 
+    // of the indexe's where X is found.
+    public static int count(int[] a, int x) {
+        return binaryLeft(a, x) > -1 ? (binaryRight(a, x) - binaryLeft(a, x)) + 1 : 0;
+    }
+
+    // Find the most left index of X using binary search
+    private static int binaryLeft(int[] a, int x) {
+        int low = 0;
+        int high = a.length - 1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            if (a[mid] == x) {
+                if (mid == 0 || a[mid - 1] != x) {
+                    return mid;
+                } 
+
+                high = mid - 1;
+            } else if (a[mid] > x) {
+                high = mid - 1;
+            } else if (a[mid] < x) {
+                low = mid + 1;  
+            }
+        }
+
+        return -1;
+    }
+
+    // Find the most right index of X using binary search
+    private static int binaryRight(int[] a, int x) {
+        int low = 0;
+        int high = a.length;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            if (a[mid] == x) {
+                if (mid == a.length - 1 || a[mid + 1] != x) {
+                    return mid;
+                }
+
+                low = mid + 1;
+            } else if (a[mid] > x) {
+                high = mid - 1;
+            } else if (a[mid] < x) {
+                low = mid + 1;
+            }
+        }
+        
+        return -1;
+    }
+
 }
